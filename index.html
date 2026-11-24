@@ -55,8 +55,8 @@
 			}
 
 			.coveropener.start.fade-in {
-			animation: fadeIn ease 2s, brain-drift 45s ease-in-out 2s infinite alternate;
-			-webkit-animation: fadeIn ease 2s, brain-drift 45s ease-in-out 2s infinite alternate;
+			animation: brain-drift 45s ease-in-out infinite alternate;
+			-webkit-animation: brain-drift 45s ease-in-out infinite alternate;
 			}
 			@keyframes brain-drift {
 			from { background-position: 15% 30%; }
@@ -85,9 +85,8 @@
 			}
 
 			.move {
-			  opacity: 0;
-			  transform: translate(0, 10vh);
-			  transition: all 3s;
+			  opacity: 1;
+			  transform: none;
 			}
 
 			.move.visible {
@@ -117,6 +116,13 @@
 			@keyframes fadeOut {
 			0% {opacity:1;}
 			100% {opacity:0;}
+			}
+
+			/* Keep the cover and sections visible: no fading out on scroll. */
+			.start.fade-in, .start.fade-out {
+			animation: none;
+			-webkit-animation: none;
+			opacity: 1;
 			}
 
 			.graphic{
