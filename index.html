@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+		<title>Missourian Infographics</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+
+		<!-- THESE ARE THE CSS FILES I ADDED -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700"/>
+
+        <!-- THESE ARE THE JAVASCRIPT FILES I ADDED -->
+
+		<script type="text/javascript" src="https://www.columbiamissourian.com/app/projects/Project_files/js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="https://www.columbiamissourian.com/app/projects/Project_files/js/jquery-ui-1.10.2.custom.js"></script>
+		<script type="text/javascript" src="https://www.columbiamissourian.com/app/projects/Project_files/js/jquery.ui.tooltip.js"></script>
+		<script type="text/javascript" src="https://www.columbiamissourian.com/app/projects/Project_files/js/jquery.cycle.all.js"></script>
+
+
+		<!-- THE CSS STYLES START HERE -->
+		<style>
+			h1 {
+				font-size: 3em;
+			    line-height: 1.4em;
+			}
+
+			p.body, a {
+				color: black;
+			    font-size: 16px;
+			    line-height: 27px;
+			    margin-bottom: 24px;
+			}
+
+			.domine, h3 {
+				 font-family:  'Domine', serif;
+			}
+
+			.base {
+				background-attachment: fixed;
+				height: 400px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+
+			.clear {clear: both;}
+
+			.coveropener {
+				position: relative;
+				background-image: url(images/brain-bg.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				height: 100vh;
+			}
+
+			.coveropener.start.fade-in {
+			animation: fadeIn ease 2s, brain-drift 45s ease-in-out 2s infinite alternate;
+			-webkit-animation: fadeIn ease 2s, brain-drift 45s ease-in-out 2s infinite alternate;
+			}
+			@keyframes brain-drift {
+			from { background-position: 15% 30%; }
+			to { background-position: 85% 70%; }
+			}
+			@-webkit-keyframes brain-drift {
+			from { background-position: 15% 30%; }
+			to { background-position: 85% 70%; }
+			}
+
+			.centered {
+			  margin: 0;
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  -ms-transform: translate(-50%, -50%);
+			  transform: translate(-50%, -50%);
+			max-width: 684px;
+			max-height: 400px;
+			width: 90%;
+			height: 90%;
+			    text-align: center;
+			    font-family: inerit;
+			    line-height: 1.5em;
+			    padding: 5%;
+			}
+
+			.move {
+			  opacity: 0;
+			  transform: translate(0, 10vh);
+			  transition: all 3s;
+			}
+
+			.move.visible {
+			  opacity: 1;
+			  transform: translate(0, 0);
+			}
+
+			.start.fade-in {
+			animation: fadeIn ease 2s;
+			-webkit-animation: fadeIn ease 2s;
+			-moz-animation: fadeIn ease 2s;
+			-o-animation: fadeIn ease 2s;
+			-ms-animation: fadeIn ease 2s;
+			}
+			@keyframes fadeIn {
+			0% {opacity:0;}
+			100% {opacity:1;}
+			}
+
+			.start.fade-out {
+			animation: fadeOut ease 3s forwards;
+			-webkit-animation: fadeOut ease 3s forwards;
+			-moz-animation: fadeOut ease 3s forwards;
+			-o-animation: fadeOut ease 3s forwards;
+			-ms-animation: fadeOut ease 3s forwards;
+			}
+			@keyframes fadeOut {
+			0% {opacity:1;}
+			100% {opacity:0;}
+			}
+
+			.graphic{
+				width: 100%;
+			    max-width: 630px;
+			    height: auto;
+			    margin: 0 auto 0 auto ;
+			}
+			.graphicmedium{
+			    max-width: 960px;
+			    width: 100%;
+			    height: auto;
+			    margin: 0 auto 0 auto ;
+			}
+			.graphicwide{
+			    max-width: 1200px;
+			    width: 100%;
+			    height: auto;
+			    margin: 0 auto 0 auto ;
+			}
+
+			.graphic h4, .graphicwide h4, .graphicmedium h4  {
+			    padding: 0;
+			    margin: 50px 0 4px 0;
+			    font-family:  'Domine', serif;
+			    font-weight: bold;
+			    font-size: 1.5em;
+			    line-height: 1.5em;
+			    z-index: 2000;
+			    }
+
+			.graphic p, p {
+			    width: 100%;
+			    padding: 5px 0;
+			    margin: 0 0 8px 0;
+			    font-family:  'Domine', serif;
+			    font-size: 1em;
+			    line-height: 1.5em;
+			    z-index: 2000;
+			    }
+
+			.graphic img, .graphicmedium img, .graphicwide img{
+			    width: 100%;
+			    height: auto;
+			    z-index: 1000;
+			    }
+
+			.graphic div{
+			    height: auto;
+			    z-index: 1000;
+			}
+
+			.tab-nav a {
+			    background: none repeat scroll 0 0 white;
+			    border: 1px solid black;
+			    color: black;
+			    display: inline-block;
+			    font-size: 12px;
+			    font-weight: bold;
+			    margin: 0 4px 0 0;
+			    border-radius: 100%;
+			    padding: 4px 4px;
+			    width: 14px;
+			    text-align: center;
+			    text-decoration: none;
+			    font-family: sans-serif;
+			    line-height: 14px;
+			}
+
+			#next_panel {
+				width: 70px;
+				border-radius: 15px;
+			}
+
+			.tab-nav a.activeSlide {
+			    background: none repeat scroll 0 0 white;
+			    color: black;
+			}
+
+			.tab-nav {
+			    width: auto !important;
+			    float: left;
+			    margin: 10px 10px 0 0;
+			    height: 44px;
+			}
+
+			.tab-wrapper {
+			    margin: 0 auto -1px auto;
+			    height: 20px;
+			}
+
+			#panel_graphic {
+			    margin: 10px 0 0 0;
+			    position: relative;
+			    width: 100% !important;
+			}
+
+			.panel {
+			    position: relative;
+			    display: block;
+			    left: 0;
+			    opacity: 1;
+			    padding: 10px;
+			    z-index: 4;
+			    background-color: white;
+					width: 100%;
+			}
+
+			.title{
+				font-family: 'Open Sans', sans-serif;
+				font-size: 1em;
+				width: 450px;
+				margin-left: 40px;
+			}
+
+			#slideshow-wrapper {margin: 20px 0 10px 0; color: black;}
+			#slideshow-nav  {height: auto;float: left;z-index: 1000;}
+			#slideshow-nav li {
+			    border: 1px solid #999999;
+			    border-bottom: 1px solid white;
+			    border-radius: 10px 10px 0 0;
+			    padding: 10px 10px 5px 10px;
+			    display: block;
+			    float: left;
+			    zoom: 1;
+			    filter: alpha(opacity=50);
+			    opacity: 0.5;
+			    margin: 0 0 0 5px;
+			    width: 15%;
+			    font-family: arial, sans-serif;
+			    font-size: 12px;
+			    line-height: 14px;
+			    text-align: center;
+			    height: auto;
+			    vertical-align: top;
+			    background-color: none;
+				color: black;
+			}
+
+			#slideshow-nav li img {width: 100%;}
+			.nav-container {z-index: 2000;}
+			#slideshow-nav li.first {margin-left: 6px;}
+			#slideshow-nav li:hover {zoom: 1;filter: alpha(opacity=100);opacity: 1; background-color: white;}
+			#slideshow-nav li.activeSlide  {filter:alpha(opacity=100);opacity:1; background-color: white;font-weight: bold;border-bottom:2px solid white;z-index: 1000;}
+			#slidescontainer {position: relative;overflow: hidden;}
+			#slideshow {position: relative;width: 100% !important;}
+			.slide {width: 100% !important; position: absolute;text-align: left;padding: 10px 20px 0 20px; display: none;background-color: white;z-index: 1;}
+
+			.horiz-line1 {margin-top: -1px;border-top: 1px solid #999999;z-index:100;}
+			#prev-btn, #next-btn {display: inline;float: left;margin-top: 10px;padding: 0px 0px 0 10px;width: 31px;text-align: left;vertical-align: middle;z-index: 20;}
+			#next-btn {text-align: right;}
+			#arrowfull {zoom: 1;filter: alpha(opacity=100);opacity: 1;}
+			#arrowfaint {zoom: 1;filter: alpha(opacity=20);opacity: 0.4;}
+
+			#slideshow-wrapper2 {margin: 20px 0 10px 0; color: black;}
+			#slideshow-nav2  {height: auto;float: left;z-index: 1000;}
+			#slideshow-nav2 li {
+			    border: 1px solid #999999;
+			    border-bottom: 1px solid white;
+			    border-radius: 10px 10px 0 0;
+			    padding: 10px 10px 5px 10px;
+			    display: block;
+			    float: left;
+			    zoom: 1;
+			    filter: alpha(opacity=50);
+			    opacity: 0.5;
+			    margin: 0 0 0 5px;
+			    width: 15%;
+			    font-family: arial, sans-serif;
+			    font-size: 12px;
+			    line-height: 14px;
+			    text-align: center;
+			    height: auto;
+			    vertical-align: top;
+			    background-color: white;
+			    color: black;
+			}
+
+			#slideshow-nav2 li img {width: 100%; color: white; padding-top: 10px;}
+			.nav-container2 {z-index: 2000;}
+			#slideshow-nav2 li.first {margin-left: 6px;}
+			#slideshow-nav2 li:hover {zoom: 1;filter: alpha(opacity=100);opacity: 1; background-color: white;}
+			#slideshow-nav2 li.activeSlide  {filter:alpha(opacity=100);opacity:1; background-color: white;font-weight: bold;border-bottom:2px solid white ;z-index: 1000;}
+			#slidescontainer2 {position: relative; overflow: hidden;}
+			#slidewithimages { position: relative; width: 100% !important;}
+			.slidewithimage {position: absolute;text-align: left;padding: 0 20px; display: none;background-color: white;z-index: 1;}
+
+			.dots{
+				    position: relative;
+				}
+
+				.dot {
+				    background-color: #DF7527;
+				    color: white;
+				    text-align: center;
+				    vertical-align: middle;
+				    padding: 0;
+				    line-height: 20px;
+				    font-family: sans-serif;
+				    font-size: 14px;
+				    width: 20px !important;
+				    height: 20px !important;
+				    border-radius: 20px;
+				    border: 1px solid #ffffff;
+				    box-shadow: 1px 1px 1px #000000;
+				    cursor: pointer;
+				    z-index: 999;
+				}
+
+				.dots #parent {
+				  position: absolute;
+				  width: auto;
+				}
+
+				#parent a {
+					text-decoration: none;
+				}
+
+				#popup {
+					position: absolute;
+					background-origin: bottom left;
+					left: -75px;
+					bottom: 45px;
+				  border: solid 1px #666666;
+				  background-color: white;
+				  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+				  padding: 10px;
+				  font-family: 'Open Sans', sans-serif;
+				  font-size: 0.9em;
+				  line-height: 1.2em;
+				  width: 160px;
+				  color: black;
+				}
+
+				#parent #popup::after {
+				  content: "";
+				  position: absolute;
+				  top: 100%;
+				  left: 45%;
+				  margin-left: -5px;
+				  border-width: 10px;
+				  border-style: solid;
+				  border-color: black transparent transparent transparent;
+				}
+
+				#popup div {
+					width: 100%;
+					margin: auto;
+				}
+
+				#parent #popup {
+				  display: none;
+				  min-width: 250px;
+				}
+
+				#parent:hover #popup {
+				  display: block;
+				}
+
+				#parent:hover {
+				  z-index: 5000;
+				}
+
+				@media screen and (max-width: 1400px){
+					.hide-desktop {display:block;}
+					.hide-desktop {display:none;}
+					.hide-tablet {display:none;}
+				}
+
+				@media screen and  (max-width: 1100px){
+				}
+
+				@media screen and (max-width: 768px){
+					.hide-desktop {display:none;}
+					.hide-tablet {display:block;}
+				}
+
+				@media screen and (max-width: 480px){
+					.hide-desktop {display:none;}
+					.hide-tablet {display:none;}
+					.hide-mobile {display:block;}
+					.graphic h4 {font-size:1.5em;}
+					.graphic p {font-size:0.9em; line-height: 1.4em;}
+					.graphic {width: 100%; max-width: 1200px;}
+					.centered {max-height: none;}
+				}
+
+				@media screen and (max-width: 300px){
+					.graphic h4 {font-size:1.5em;}
+					.graphic p {font-size:0.9em; line-height: 1.4em;}
+					.graphic {width: 100%; max-width: 1200px;}
+					.centered {max-height: none;}
+				}
+		</style>
+
+</head>
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- THE PAGE YOU SEE STARTS HERE!!!!!!!!!  -->
+<!--
+  INTERACTIVE DRAFT — Ryan Brandt
+  Built from the print graphic "State of mind: the youth mental health crisis is increasing."
+  Everything added below this comment uses only HTML elements from the Codecademy
+  "Learn HTML" course: headings, paragraphs, lists, links, images, tables, forms
+  and semantic HTML (header, nav, main, section, footer). No new CSS and no new
+  JavaScript were added. The <style> and <script> tags in the <head> are the
+  ones that came with the Missourian template itself.
+  All facts and numbers come from the print graphic. Where the print graphic
+  gives a range or an approximate value, the page says so instead of inventing
+  an exact number.
+-->
+
+<body id="site" class="base" style="background-image: url(); background-color: white; color: black;">
+
+<!-- INTRO SECTION -->
+
+			<div class="coveropener start fade-in" style="background-color: white;">
+
+					<div class="centered" style="background-color: rgb(255, 255, 255, 0.5);">
+						<h1>State of mind: the youth mental health crisis is increasing</h1>
+						<p>By Ryan Brandt</p>
+						<p>Adolescence is a crucial phase for brain development, and screen time among adolescents has surged in the last decade and a half. This interactive looks at the effects on mental health across the country and in Missouri.</p>
+					</div>
+				</div>
+
+<main>
+
+<!-- THE STORY -->
+
+<section id="story">
+	<div class="graphic">
+		<h4>The story</h4>
+		<p>Adolescence is a crucial phase for brain development. Screen time among adolescents has surged in the last decade and a half according to the CDC. We investigated the effects on mental health both across the country and in Missouri, ranking 38th for youth experiencing major depression by Mental Health America.</p>
+		<p>According to the CDC&#39;s National Center for Health Statistics, teens who use screens for four or more hours a day report higher rates of anxiety (27.1%) and depression (25.9%) compared to those who use them less than four hours (12.3% and 9.5%).</p>
+		<p>Teens are especially vulnerable because their emotional brain areas are very active while their prefrontal cortex continues maturing until about age 24 or 25, says Dr. Janis Drawn from MU Psychological Services Clinic. She points out that screen use late at night interferes with sleep, worsening depression and anxiety in a &#34;vicious cycle.&#34;</p>
+	</div>
+</section>
+
+<!-- THE NATIONAL MAP -->
+
+<section id="map">
+	<div class="graphic">
+		<h4>The national mental health landscape amongst adolescents</h4>
+		<p>Each state supports youth mental health, differently. The lightest green areas (ranked 1-13) represent states with the lowest rates of mental illness and the best access to professional care for adolescents. Meanwhile, the darkest green regions (ranked 39-51) highlight states facing a higher prevalence of youth mental illness alongside restricted access to necessary services.</p>
+		<p>Missouri is outlined in red on the map. Missouri ranks 38th for youth experiencing major depression, according to Mental Health America.</p>
+		<img src="images/us-map.png" alt="Map of the United States shaded by youth mental health ranking, from ranked 1-13 to ranked 39-51. Missouri is outlined in red." />
+	</div>
+
+	<div class="graphic move">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Ranking</th>
+					<th scope="col">What it means</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Ranked 1-13</td>
+					<td>Lowest rates of mental illness and the best access to professional care</td>
+				</tr>
+				<tr>
+					<td>Ranked 39-51</td>
+					<td>Higher prevalence of youth mental illness and restricted access to necessary services</td>
+				</tr>
+				<tr>
+					<td>Missouri: 38th</td>
+					<td>Missouri ranks 38th for youth experiencing major depression</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Source: Mental Health America</p>
+	</div>
+</section>
+
+<!-- MISSOURI, 2003 TO 2023 -->
+
+<section id="missouri">
+	<div class="graphic">
+		<h4>The decade of decline: Missouri adolescent mental health</h4>
+		<img src="images/missouri-chart.png" alt="Line chart of Missouri Youth Risk Behavior Survey data, 2003 to 2023. High schoolers who felt sad or hopeless hovered between 23.6% and 27.5% from 2003 to 2015, then rose to 44.3% by 2023. Teens who seriously considered attempting suicide have steadily increased since 2013." />
+	</div>
+
+	<div class="graphic move">
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Period</th>
+					<th scope="col">Felt sad or hopeless</th>
+					<th scope="col">Considered attempting suicide</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>2003 to 2015</td>
+					<td>Between 23.6% and 27.5%</td>
+					<td>Lower, and rising slowly</td>
+				</tr>
+				<tr>
+					<td>2023</td>
+					<td>44.3%</td>
+					<td>Higher, and rising steadily since 2013</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Source: Mental Health America</p>
+	</div>
+</section>
+
+<!-- SCREEN TIME -->
+
+<section id="screentime">
+	<div class="graphic">
+		<h4>The screentime surge: tracking hours from 2015 to 2026</h4>
+		<p>Measured in hours, average screen time grew steadily from approximately six and a half hours in 2015 to a peak of well over eight hours in 2021. While the total dipped slightly by 2026, it remains significantly higher than pre-pandemic levels.</p>
+		<img src="images/screentime-bars.png" alt="Bar chart of average daily screen time in hours: about 6.5 hours in 2015, about 7.3 in 2019, about 8.5 in 2021, and about 8.0 in 2026." />
+	</div>
+
+	<div class="graphic move">
+		<form action="#screen-time-results" method="get">
+			<fieldset>
+				<legend>How many hours a day do you spend on screens?</legend>
+				<input type="radio" id="under4" name="screen-hours" value="under-4" />
+				<label for="under4">Less than 4 hours</label>
+				<br />
+				<input type="radio" id="over4" name="screen-hours" value="over-4" />
+				<label for="over4">4 hours or more</label>
+				<br />
+				<input type="submit" value="See how your group compares" />
+			</fieldset>
+		</form>
+	</div>
+
+	<div class="graphic move" id="screen-time-results">
+		<h4>Your results: screen time and mental health</h4>
+		<p>Teens who use screens for four or more hours a day report higher rates of anxiety and depression than teens who use them less than four hours, according to the CDC&#39;s National Center for Health Statistics.</p>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Daily screen time</th>
+					<th scope="col">Anxiety</th>
+					<th scope="col">Depression</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Less than 4 hours</td>
+					<td>12.3%</td>
+					<td>9.5%</td>
+				</tr>
+				<tr>
+					<td>4 hours or more</td>
+					<td>27.1%</td>
+					<td>25.9%</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Source: CDC, National Center for Health Statistics</p>
+	</div>
+
+	<div class="graphic move">
+		<h4>Average daily screen time, by year</h4>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">Year</th>
+					<th scope="col">Average screen time, in hours</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>2015</td>
+					<td>About 6.5</td>
+				</tr>
+				<tr>
+					<td>2019</td>
+					<td>About 7.3</td>
+				</tr>
+				<tr>
+					<td>2021</td>
+					<td>About 8.5</td>
+				</tr>
+				<tr>
+					<td>2026</td>
+					<td>About 8.0</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>These values are read approximately from the bar heights in the print graphic. The graphic itself states the trend in words: about six and a half hours in 2015, a peak of well over eight hours in 2021, and a slight dip by 2026 that still leaves screen time significantly higher than before the pandemic.</p>
+		<p>Source: CDC, National Center for Health Statistics</p>
+	</div>
+</section>
+
+<!-- DIGITAL WELLNESS TIPS -->
+
+<section id="tips">
+	<div class="graphic">
+		<h4>Digital wellness: tips for parents and friends</h4>
+		<p>Screens play a major role in the lives of adolescents. However, managing their impact is possible. Below are some practical steps families can take to help teens build healthier digital habits and protect their mental bandwidth as much as possible.</p>
+		<ul>
+			<li>Establish screen time limits</li>
+			<li>Use parental controls</li>
+			<li>Have open conversations about use</li>
+			<li>Prioritize outdoor activities</li>
+			<li>Find new hobbies</li>
+			<li>Lead by example</li>
+			<li>Create tech free zones</li>
+		</ul>
+	</div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+
+<footer id="sources">
+	<div class="graphic" style="color: #666666;">
+		<h4>Sources</h4>
+		<ul>
+			<li><a href="https://www.cdc.gov">Centers for Disease Control and Prevention (CDC)</a></li>
+			<li><a href="https://www.cdc.gov/nchs">CDC, National Center for Health Statistics</a></li>
+			<li><a href="https://mhanational.org">Mental Health America</a></li>
+			<li>Missouri Youth Risk Behavior Survey</li>
+		</ul>
+		<p>By Ryan Brandt</p>
+	</div>
+</footer>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- END OF GRAPHIC TEMPLATE ELEMENTS  -->
+<!-- DO NOT MODIFY OR DELETE ANYTHING BELOW HERE. -->
+
+				<script>
+					$(document).on("scroll", function() {
+					  var pageTop = $(document).scrollTop();
+					  var pageBottom = pageTop + $(window).height();
+					  var moves = $(".move");
+					  var start = $(".start");
+
+					  for (var i = 0; i < moves.length; i++) {
+					    var move = moves[i];
+
+						if ($(move).position().top < pageBottom) {
+						      $(move).addClass("visible");
+						    } else {
+						      $(move).removeClass("visible");
+						    }
+						}
+						if ($(start).position().top = pageTop)  {
+						      $(start).addClass("fade-out");
+						      $(start).removeClass("fade-in");
+						    } else {
+						      $(start).addClass("fade-in");
+						      $(start).removeClass("fade-out");
+						    }
+					});
+				</script>
+
+
+	</body>
+</html>
